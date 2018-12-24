@@ -1,0 +1,35 @@
+<li>
+    <div class="card" >
+        <div class="row">
+                
+
+            <div class="col-sm-4">
+                    <img class="card-img-top" [src]="menuItem.itemImage" [alt]="menuItem.itemName" width="10px" height="100px">
+                
+            </div>
+            <div class="col-sm-4">
+                {{menuItem.itemName}} 
+                <hr/>
+                Price:{{menuItem.itemPrice | currency}}
+                <hr/>
+                
+            </div>
+            <div class="col-sm-4">
+                <button class="btn btn-info" (mouseover)="showDescription()" (mouseout)="hideDescription()">Item Description</button>
+                <div *ngIf="showDescriptionDiv">{{menuItem.itemDescription}}</div>
+
+                <button *ngIf="!displayOrderDiv" (click)="showOrderDiv()">Order</button>
+                <div *ngIf="displayOrderDiv">
+                    <label for="quantity">Quantity:  </label>
+                    <select  name="inputQunatity" id="quantity">
+                        <option *ngFor="let i of quantityOfItem" value="{{i}}">{{i}}</option>
+                    </select>
+
+                    <button>Add to  Cart</button>
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+</li>

@@ -1,0 +1,69 @@
+<button btn btn-primary (click)="cancelMethod()">Cancel</button>
+<button btn btn-primary (click)="showMethod()">Show Form</button>
+<form *ngIf="show" [formGroup]="signUpForm" (ngSubmit)="registerUser()">
+    <div class="form-group">
+      <label for="exampleInputName">Name</label>
+      <input 
+        type="text" 
+        class="form-control" 
+        id="exampleInputName" 
+        placeholder="Enter your name"
+        formControlName="userName"
+      >
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input 
+        type="email" 
+        class="form-control" 
+        id="exampleInputEmail1" 
+        aria-describedby="emailHelp" 
+        placeholder="Enter your email"
+        formControlName="userEmail">
+
+      <span id="emailHelp" *ngIf="!isEmailRegistered; else message" class="class1">We'll never share your email with anyone else.</span>
+      <ng-template  #message>
+          <span class="class2">This email is already registered with us.</span>
+      </ng-template>
+        
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input 
+        type="password" 
+        class="form-control" 
+        id="exampleInputPassword1" 
+        placeholder="Password"
+        formControlName="userPassword"
+        
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputPhone1">Phone</label>
+      <input 
+        type="number" 
+        class="form-control" 
+        id="exampleInputPhone1" 
+        placeholder="Phone"
+        formControlName="userPhone"
+      >
+    </div>
+    
+    <div class="form-group">
+        <label for="customerType">User Type</label>
+        <select 
+          type="number" 
+          class="form-control" 
+          id="customerType" 
+          placeholder="Customer type"
+          formControlName="userIsAdmin"
+        >
+        <option value="false">Customer</option>
+        <option value="true">Admin</option>
+        </select>
+      </div>
+
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
